@@ -144,10 +144,10 @@ introsort version that combines quicksort and heapsort according the
 depth of recursive calls and takes more care of pivot selection. Also,
 the partition method could be adapted for better profiting of hardware
 cache (it exists versions that perform the partition sequentially from
-left to right, by contrast with my version that traverse both sides
+left to right, by contrast with my version that traverses both sides
 and eventually could cause more cache misses).
 
-#### Several files
+#### Using several files
 
 In this version, the sorted sequences are put in final file through a
 `OutputFile` object (see `include/outputfile.H`). This class uses
@@ -160,9 +160,9 @@ separated files, one file by thread. In this way, no thread would wait
 for writing. It would just write without any contention. As each
 thread completes, it concatenate its file to a resulting file.
 
-#### Inlining and separated compilation units
+#### Using separated compilation units
 
-For time reasons, I preferred to put my helpers classes and function
+For time reasons, I preferred to put my helpers classes and functions
 in header files. Of course, an alternative, especially if 
 encapsulation and information hiding is required, consist in handle
 separated compilation units. In this case:
@@ -171,5 +171,6 @@ separated compilation units. In this case:
    even a more sophisticated approach (pimpl idiom for example), and
 
 2. A `src` directory containing the source implementation would be
-   used and every unit would be compiled. 
+   used and every source unit would be compiled and linked to the
+   resulting target program.
 
