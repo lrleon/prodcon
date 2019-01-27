@@ -33,7 +33,7 @@ void worker_thread(ItemQueue & q, OutputFile & output,
     }
 }
 
-CmdLine cmd = { "test", ' ', "0" };
+CmdLine cmd = { "prodcon", ' ', "0" };
 
 ValueArg<string> input_name =
   { "i", "input", "input file name", true, "", "input file name", cmd };
@@ -50,7 +50,7 @@ SwitchArg test = { "t", "test", "run correctness test", cmd };
 vector<string> sort_types = { "insertion", "merge", "std", "quick" };
 ValuesConstraint<string> allowed_sort_types = sort_types;
 ValueArg<string> sort_type =
-  { "S", "sort-type", "sorting method", false, "insertion",
+  { "S", "sort-type", "sorting method", false, "quick",
     &allowed_sort_types, cmd };
 
 constexpr size_t Max_Num_Of_Threads = 16; // ok for some modern processors
