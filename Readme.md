@@ -161,6 +161,11 @@ separated files, one file by thread. In this way, no thread would wait
 for writing. It would just write without any contention. As each
 thread completes, it concatenates its file to a resulting final file.
 
+Perhaps the way as the file is written can be improved. For example,
+it could be worthy to build the line before taking the mutex, and then
+lock the mutex and write the full line. also, to use the C library for
+reading/writing files instead of C++ library definitively would be faster.
+
 #### Using separated compilation units
 
 For time reasons, I preferred to put my helpers classes and functions
