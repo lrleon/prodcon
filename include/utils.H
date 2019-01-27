@@ -20,7 +20,6 @@ struct ExceptionBuilder
   }
 };
 
-
 // build a vector with the numbers contained in the item
 inline std::vector<long> item_to_vector(std::string && item, char delim = ' ')
   noexcept
@@ -43,31 +42,6 @@ inline std::vector<long> item_to_vector(std::string && item, char delim = ' ')
 
   if (not str.empty())
     ret.push_back(atol(str.c_str()));
-
-  return ret;
-}
-
-inline std::priority_queue<long, std::vector<long>, std::greater<long>>
-item_to_priority_queue(std::string && item)
-{
-  std::priority_queue<long, std::vector<long>, std::greater<long>> ret;
-  std::string str;
-  for (auto c : item)
-    {
-      if (c == ' ')
-        {
-          if (str.size() > 0)
-            {
-              ret.push(atol(str.c_str()));
-              str.erase();
-            }
-        }
-      else
-        str.push_back(c);
-    }
-
-  if (not str.empty())
-    ret.push(atol(str.c_str()));
 
   return ret;
 }

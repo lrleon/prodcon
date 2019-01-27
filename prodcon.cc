@@ -92,6 +92,7 @@ int main(int argc, char * argv[])
       sort_method = merge_sort;
     else if (sort_algo == "quick")
       sort_method = quick_sort;
+    else
       sort_method = [] (vector<long> & v) { sort(v.begin(), v.end()); };
 
     raise_domain_error_unless(num_threads.getValue() < Max_Num_Of_Threads)
